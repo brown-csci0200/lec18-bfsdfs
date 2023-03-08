@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,10 +33,18 @@ public class TestCityGraph {
 
     @Test
     public void testCanReach() {
+//        System.out.println(man);
+//        System.out.println(bos);
+        Assert.assertTrue(pvd.canReach(pvd));
+        Assert.assertTrue(pvd.canReach(bos));
+        Assert.assertTrue(bos.canReach(har));
+    }
 
-        System.out.println(man);
-        System.out.println(bos);
-
+    @Test
+    public void testCanReachDFS() {
+        Assert.assertTrue(neBuses.canReach(pvd, pvd));
+        Assert.assertTrue(neBuses.canReach(pvd, bos));
+        Assert.assertTrue(neBuses.canReach(bos, har));
     }
 
 }

@@ -1,0 +1,21 @@
+Method calls (original)
+(See the typed notes for a version with more annotations)
+
+bos.canReach(har)
+    pvd.canReach(har)
+       bos.canReach(pvd)
+          pvd.canReach(bos)
+             ...
+
+    wor.canReach(har) // Will never get here!
+
+
+Method calls (helper version)
+bos.canReachHelper(har, {})
+  pvd.canReachHelper(har, {bos}) => False
+      // Doesn't call bos.canReach(har) since already visited!
+  wos.canReachHelper(har, {bos, pvd})
+     har.canReachHelper(har, {bos, pvd, wos}) => True
+
+
+

@@ -14,8 +14,30 @@ public class CityVertex {
         this.toCities.add(toVertex);
     }
 
+    public LinkedList<CityVertex> getNeighbors() { return this.toCities; }
+
     public boolean canReach(CityVertex dest) {
-        return false; // TODO
+        // to start, visited set is empty
+        return this.canReachHelper(dest, new HashSet<CityVertex>());
+    }
+    
+    public boolean canReachHelper(CityVertex dest, HashSet<CityVertex> visited) {
+            if (this.equals(dest)) {
+                return true;
+            }
+
+            visited.add(this);
+
+            for (CityVertex neighbor : this.toCities) {
+                if (!visited.contains(neighbor)) {
+
+                    if (neighbor.canReachHelper(dest, visited)) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
     }
 
     public String toString() {
