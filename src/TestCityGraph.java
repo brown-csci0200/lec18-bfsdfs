@@ -36,6 +36,12 @@ public class TestCityGraph {
         System.out.println(man);
         System.out.println(bos);
 
+        assertTrue(bos.canReach(bos));
+        assertTrue(bos.canReach(pvd));
+        assertFalse(bos.canReach(man));
+        assertTrue(bos.canReach(har));
+
+
     }
 
 }
